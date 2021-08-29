@@ -8,8 +8,8 @@ function setup() {
     /* creakte canvas */
     createCanvas(windowWidth, windowHeight);
     
-    /* start auto scroll after 1 second */
-    setTimeout(startAutoScroll, 1000); 
+    /* start auto scroll after 0.5 second */
+    setTimeout(startAutoScroll, 500); 
 
     /* create trees */
     createTrees();
@@ -44,16 +44,17 @@ function createTrees() {
 
     const a = -PI/2;
     const y = height/2;
-    fractalTrees.push(new FractalTree(-1, y, a, 0, 200))
-    fractalTrees.push(new FractalTree(width, y, a, 0, 200))
-    fractalTrees.push(new FractalTree(width/4, y, a, 0, 50))
+    fractalTrees.push(new FractalTree(-1, y, a, 0, 150))
+    fractalTrees.push(new FractalTree(width, y, a, 0, 150))
+    fractalTrees.push(new FractalTree(width/4, y, a, 0, 30))
+    fractalTrees.push(new FractalTree(3*width/4, y, a, 0, 30))
 }
 
 function drawWelcome() {
-    const scrollPer = document.documentElement.scrollTop/scrollTo;
+    const scrolPos = document.documentElement.scrollTop;
 
     /* write text */
-    fill(255, 255, 255, 255*scrollPer);
+    fill(255, 255, 255, map(scrolPos, 0, scrollTo, 0, 255));
     textSize(64);
     textAlign(CENTER, CENTER);
     if (windowWidth < 1000) {
@@ -69,11 +70,17 @@ function drawWelcome() {
     text("Scroll down to see more", width/2, height/4+50);
 
     /* draw trees */
-    stroke(255);
     strokeWeight(1);
-    fractalTrees.forEach((tree) => tree.draw((PI/3)*scrollPer));
-
+    fractalTrees.forEach((tree) => {
+        if (mouseX != 0 && mouseY != 0) {
+            tree.setWind(map(mouseX, 0, width, -1, 1));
+        }
+        tree.branchA = map(scrolPos, 0, scrollTo, PI/50, PI/6);
+        tree.draw();
+    })
+    
     /* draw ground */
+    stroke(255);
     strokeWeight(2);
     line(-1, height/2, width, height/2);
 }
