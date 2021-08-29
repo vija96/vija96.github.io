@@ -1,0 +1,16 @@
+.banner {
+    background: #191919;
+}
+
+.banner__content {
+  margin: auto;
+  padding: 16px;
+}
+
+.banner__text {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  
+  color: #ffffff;
+  font-size: 32px;
+}
