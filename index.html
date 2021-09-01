@@ -3,31 +3,30 @@
 <head>
   <meta charset="UTF-8">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap" rel="stylesheet">
+  <!-- fonts -->
 
+  <!-- CSS styling -->
   <link rel="stylesheet" href="styles/banner.css">
   <link rel="stylesheet" href="styles/body.css">
 
+  <!-- lottie animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"> </script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-  <script language="javascript" src="./FractalTree.js"></script>
-  <script language="javascript" src="./index.js"></script>
 
+  <!-- my scripts -->
+  <script language="javascript" src="./src/FractalTree.js"></script>
+  <script language="javascript" src="./src/index.js"></script>
+  
   <title>Viktor Jansson</title>
-
-  <style>
-
-  </style>
+  
 </head>
 
 <body>
-    <div class="banner" >
-        <div class="banner__content">
-            <div class="banner__text">
-                <strong>---</strong> 
-            </div>
-        </div>
-    </div>
+    <div class="header">
+        <h1>Viktor Jansson</h1>
+        <a class="mail-animation" href="mailto: viktor@jansson.com"></a>
+        <script language="javascript" src="./src/mailAnimation.js"></script>
+    </div>    
+
 </body>
 </html>
