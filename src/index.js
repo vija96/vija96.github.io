@@ -1,9 +1,7 @@
-
 var autoScroll = false;
 var fractalTrees = [];
 var scrollTo = 74;
 var scrollTimer;
-
 function setup() {
     /* creakte canvas */
     createCanvas(windowWidth, windowHeight);
@@ -44,10 +42,10 @@ function createTrees() {
 
     const a = -PI/2;
     const y = height/2;
-    fractalTrees.push(new FractalTree(-1, y, a, 0, 150))
-    fractalTrees.push(new FractalTree(width, y, a, 0, 150))
-    fractalTrees.push(new FractalTree(width/4, y, a, 0, 30))
-    fractalTrees.push(new FractalTree(3*width/4, y, a, 0, 30))
+    fractalTrees.push(new FractalTree(-1, y, a, 0, 130))
+    fractalTrees.push(new FractalTree(width, y, a, 0, 130))
+    //fractalTrees.push(new FractalTree(width/4, y, a, 0, 30))
+    //fractalTrees.push(new FractalTree(3*width/4, y, a, 0, 30))
 }
 
 function drawWelcome() {
@@ -62,7 +60,7 @@ function drawWelcome() {
     } else if (windowWidth < 1500) {
         text("Hello", width/2, height/4);
     } else {
-        text("Hi, I'm Viktor", width/2, height/4);
+        text("Hi there", width/2, height/4);
     }
     
     noStroke();
