@@ -6,21 +6,22 @@ class FractalTree {
     #leafColor
     #branchColor
 
-    constructor(x, y, trunkA, branchA, trunkLen) {
+    constructor(x, y, trunkA, branchA, trunkLen, ctx) {
         /* public  */
         this.x = x;
         this.y = y;
         this.trunkLen = trunkLen;
         this.trunkA = trunkA;
         this.branchA = branchA;
+        this.ctx = ctx;
 
         /* private */
         this.#minBranchLen = 5;
         this.#factor = 0.7;
         this.#wind = 0;
         this.#prevLogVarName = '';
-        this.#leafColor = color(46, 125, 50);
-        this.#branchColor = color(255);
+        this.#leafColor = "#2E7D32";
+        this.#branchColor = "#ffffff";
     }
 
     setMinBranchLen(minBranchLen) {
@@ -41,7 +42,7 @@ class FractalTree {
 
     setWind(wind) {
         if (-1 <= wind && wind <= 1) {
-            this.#wind = wind * PI/15;
+            this.#wind = wind * Math.PI/15;
         } else {
             this.#logOutsideRange("wind");
         }
@@ -57,14 +58,26 @@ class FractalTree {
     }
 
     #drawTree(x, y, a1, l) {  
-        const isLeaf = l * this.#factor < this.#minBranchLen;        
+        const isLeaf = l * this.#factor < this.#minBranchLen;   
         
-        stroke(isLeaf ? this.#leafColor : this.#branchColor);
-        const x2 = x + cos(a1) * l;
-        const y2 = y + sin(a1) * l; 
-        line(x, y, x2, y2);
+        if (isLeaf) {
+            this.ctx.strokeStyle = this.#branchColor;
+            this.ctx.stroke();
+            this.ctx.beginPath();
+        }
+        
+        const x2 = x + Math.cos(a1) * l;
+        const y2 = y + Math.sin(a1) * l; 
 
-        if (isLeaf) { return; }
+        this.ctx.moveTo(x, y);
+        this.ctx.lineTo(x2, y2);
+
+        if (isLeaf) { 
+            this.ctx.strokeStyle = this.#leafColor;
+            this.ctx.stroke();
+            this.ctx.beginPath();
+            return; 
+        }
         
         const aShift = this.branchA;
         this.#drawTree(x2, y2, a1 + aShift + this.#wind, l * this.#factor);

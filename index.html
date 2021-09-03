@@ -6,27 +6,32 @@
   <!-- fonts -->
 
   <!-- CSS styling -->
-  <link rel="stylesheet" href="styles/banner.css">
+  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/body.css">
 
   <!-- lottie animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"> </script>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 
   <!-- my scripts -->
-  <script language="javascript" src="./src/FractalTree.js"></script>
-  <script language="javascript" src="./src/index.js"></script>
   
   <title>Viktor Jansson</title>
   
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" id="header">
         <h1>Viktor Jansson</h1>
         <a class="mail-animation" href="mailto: viktor@jansson.com"></a>
         <script language="javascript" src="./src/mailAnimation.js"></script>
-    </div>    
+    </div>
+
+    <div>
+        <canvas id="canvas" width="500" height="500">
+        <script language="javascript" src="./src/FractalTree.js"></script>
+        <script language="javascript" src="./src/index.js"></script>
+    </div>
+        
+    <div class="spacing"></div>
 
 </body>
 </html>
